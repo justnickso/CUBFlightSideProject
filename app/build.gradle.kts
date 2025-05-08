@@ -1,8 +1,20 @@
+import java.util.Properties
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.ksp)
 }
+
+// 讀取 local.properties
+val localProperties = Properties()
+val localPropertiesFile = rootProject.file("local.properties")
+if (localPropertiesFile.exists()) {
+    localProperties.load(localPropertiesFile.inputStream())
+}
+
+val currencyApiKey = localProperties.getProperty("cub_currency_api_key") ?: ""
+
 
 android {
     namespace = "tw.nick.cubflying"
@@ -19,12 +31,25 @@ android {
     }
 
     buildTypes {
+        debug {
+            isDebuggable = true
+            isMinifyEnabled = false
+            buildConfigField("boolean", "DEBUG", "true")
+            buildConfigField("String", "BASE_URL", "\"https://www.kia.gov.tw\"")
+            buildConfigField("String", "CURRECNY_API_KEY", "\"$currencyApiKey\"")
+            buildConfigField("String","CURRENCY_URL", "\"https://api.freecurrencyapi.com\"")
+        }
+
         release {
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            buildConfigField("boolean", "DEBUG", "true")
+            buildConfigField("String", "BASE_URL", "\"https://www.kia.gov.tw\"")
+            buildConfigField("String", "CURRECNY_API_KEY", currencyApiKey)
+            buildConfigField("String","CURRENCY_URL", "https://api.freecurrencyapi.com")
         }
     }
     compileOptions {
@@ -35,6 +60,7 @@ android {
         jvmTarget = "11"
     }
     buildFeatures {
+        buildConfig = true
         viewBinding = true
     }
 }

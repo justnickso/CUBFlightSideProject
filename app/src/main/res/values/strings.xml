@@ -1,6 +1,10 @@
 <resources>
-    <string name="app_name">My Application</string>
+    <string name="app_name">CUB Flying</string>
     <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_flying">航空</string>
+    <string name="title_currency">匯率</string>
+    <string name="all_flying">所有航班</string>
+    <string name="arrival">抵達</string>
+    <string name="departure">出發</string>
+    <string name="boarding_gate">登機門：</string>
 </resources>

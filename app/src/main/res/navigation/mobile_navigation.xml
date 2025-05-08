@@ -12,14 +12,14 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="tw.nick.cubflying.ui.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        android:id="@+id/navigation_airport"
+        android:name="tw.nick.cubflying.ui.flying.FlyingFragment"
+        android:label="@string/title_flying"
+        tools:layout="@layout/fragment_flying" />
 
     <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="tw.nick.cubflying.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        android:id="@+id/navigation_currency"
+        android:name="tw.nick.cubflying.ui.currency.CurrencyFragment"
+        android:label="@string/title_currency"
+        tools:layout="@layout/fragment_currency" />
 </navigation>

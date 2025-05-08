@@ -1,10 +1,10 @@
-package tw.nick.cubflying.ui.notifications
+package tw.nick.cubflying.ui.currency
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class NotificationsViewModel : ViewModel() {
+class CurrencyViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
         value = "This is notifications Fragment"

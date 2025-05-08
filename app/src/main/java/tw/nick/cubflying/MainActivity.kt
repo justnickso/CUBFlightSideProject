@@ -1,21 +1,27 @@
 package tw.nick.cubflying
 
 import android.os.Bundle
+import android.util.Log
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import tw.nick.cubflying.databinding.ActivityMainBinding
+import tw.nick.cubflying.viewmodel.MainViewModel
 
 class MainActivity : AppCompatActivity() {
-
+    private val TAG = "MainActivity"
     private lateinit var binding: ActivityMainBinding
+    private val mainViewModel : MainViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -26,10 +32,28 @@ class MainActivity : AppCompatActivity() {
         // menu should be considered as top level destinations.
         val appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications
+                R.id.navigation_home, R.id.navigation_airport, R.id.navigation_currency
             )
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+       // mainViewModel.getFlyingInfoFlow()
+        mainViewModel.getCurrencyFlow()
+        //initCollection()
+    }
+
+    private fun initCollection() {
+        lifecycleScope.launch(Dispatchers.IO) {
+            mainViewModel.flyingInfoFlow.collect{
+                Log.d(TAG, "initCollection flyingInfoFlow: $it")
+            }
+        }
+
+        lifecycleScope.launch(Dispatchers.IO) {
+            mainViewModel.currencyFlow.collect{
+                Log.d(TAG, "initCollection currencyFlow: ${it.currencyData}")
+            }
+        }
+
     }
 }

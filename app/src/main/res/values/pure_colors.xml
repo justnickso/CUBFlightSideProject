@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- a = alpha, number = percentage, ex a10 = 10% Transparency-->
+<!-- l = luminance, number = percentage, ex al0 = 10% Luminance -->
+<resources>
+    <color name="color_333333">#333333</color>
+    <color name="color_F7514D">#F7514D</color>
+    <color name="color_EB9E9B">#EB9E9B</color>
+    <color name="color_4F9D52">#4F9D52</color>
+    <color name="color_93D55D">#93D55D</color>
+    <color name="color_A0AEF9">#A0AEF9</color>
+    <color name="color_F08843">#F08843</color>
+    <color name="color_F2F7FC">#F2F7FC</color>
+    <color name="color_4697EC">#4697EC</color>
+    <color name="color_E6E6E6">#E6E6E6</color>
+    <color name="color_FCBA00">#FCBA00</color>
+    <color name="color_F4BA00">#F4BA00</color>
+    <color name="color_51FFA6">#51FFA6</color>
+    <color name="color_5C6266">#5C6266</color>
+    <color name="color_D9E7F5">#D9E7F5</color>
+    <color name="color_1B1B1F">#1B1B1F</color>
+    <color name="color_C70C31">#C70C31</color>
+    <color name="color_EE0000">#FFEE0000</color>
+    <color name="color_0A8CF0">#FF0A8CF0</color>
+    <color name="color_005FBD">#FF005FBD</color>
+    <color name="color_3AC9CC">#FF3AC9CC</color>
+    <color name="color_C3C7C7">#FFC3C7C7</color>
+    <color name="color_858585">#FF858585</color>
+    <color name="color_60C3C7C7">#60C3C7C7</color>
+    <color name="color_D6D6D6">#FFD6D6D6</color>
+    <color name="color_F5F5F5">#FFF5F5F5</color>
+    <color name="color_2E3133">#FF2E3133</color>
+    <color name="color_BDBDBD">#FFBDBDBD</color>
+    <color name="color_78CB3D">#FF78CB3D</color>
+    <color name="color_578431">#FF578431</color>
+    <color name="color_F1FAEB">#FFF1FAEB</color>
+    <color name="color_E5F5D9">#FFE5F5D9</color>
+    <color name="color_F02B2B">#FFF02B2B</color>
+    <color name="color_F04869">#FFF04869</color>
+    <color name="color_943149">#FF943149</color>
+    <color name="color_F44336">#FFF44336</color>
+    <color name="color_FF4248">#FFFF4248</color>
+    <color name="color_FEF4F4">#FFFEF4F4</color>
+    <color name="color_EBEBEB">#FFEBEBEB</color>
+    <color name="color_FCDFDE">#FFFCDFDE</color>
+    <color name="color_50A327">#FF50A327</color>
+    <color name="color_E7F4DB">#FFE7F4DB</color>
+    <color name="color_065490">#FF065490</color>
+    <color name="color_828B93">#FF828B93</color>
+    <color name="color_BD0020">#FFBD0020</color>
+
+    <!-- Black-->
+    <color name="black">#FF000000</color>
+    <color name="black_a10">#1A000000</color>
+    <color name="black_a20">#33000000</color>
+    <color name="black_a24">#3D000000</color>
+    <color name="black_a30">#4C000000</color>
+    <color name="black_a40">#66000000</color>
+    <color name="black_a70">#B2000000</color>
+    <color name="black_a80">#CC000000</color>
+    <color name="black_a85">#D9000000</color>
+
+    <!-- White-->
+    <color name="white">#FFFFFFFF</color>
+    <color name="white_a00">#00FFFFFF</color>
+    <color name="white_a05">#0DFFFFFF</color>
+    <color name="white_a08">#14FFFFFF</color>
+    <color name="white_a10">#1AFFFFFF</color>
+    <color name="white_a16">#29FFFFFF</color>
+    <color name="white_a18">#2EFFFFFF</color>
+    <color name="white_a20">#33FFFFFF</color>
+    <color name="white_a24">#3DFFFFFF</color>
+    <color name="white_a30">#4DFFFFFF</color>
+    <color name="white_a32">#52FFFFFF</color>
+    <color name="white_a40">#66FFFFFF</color>
+    <color name="white_a60">#99FFFFFF</color>
+    <color name="white_a70">#B2FFFFFF</color>
+    <color name="white_a80">#CCFFFFFF</color>
+    <color name="white_a90">#E5FFFFFF</color>
+
+    <!-- Gray -->
+    <color name="gray_l97">#F9F9F9</color>
+    <color name="gray_l96">#F6F6F6</color>
+    <color name="gray_l94">#F2F2F2</color>
+    <color name="gray_l92">#ECECEC</color>
+    <color name="gray_l80">#CCCCCC</color>
+    <color name="gray_l76">#C2C2C2</color>
+    <color name="gray_l56">#909090</color>
+    <color name="gray_l43">#6F6F6F</color>
+    <color name="gray_l29">#4B4B4B</color>
+    <color name="gray_l18">#2D2D2D</color>
+
+    <!-- transparent -->
+    <color name="transparent">#00000000</color>
+
+</resources>
