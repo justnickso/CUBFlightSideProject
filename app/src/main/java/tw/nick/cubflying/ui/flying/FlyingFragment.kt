@@ -50,7 +50,7 @@ class FlyingFragment : Fragment() {
 
     private fun initView() {
         //default Data
-        flyingViewModel.getFlyingInfoListFlow(status.value, status.value)
+        flyingViewModel.getFlyingInfoListFlow(status.value)
 
         binding.rvFlying.apply {
             layoutManager = LinearLayoutManager(context)
@@ -59,12 +59,12 @@ class FlyingFragment : Fragment() {
 
         binding.btnArrival.setOnClickListener {
             status = FlyingStatus.ARRIVAL
-            flyingViewModel.getFlyingInfoListFlow(status.value, status.value)
+            flyingViewModel.getFlyingInfoListFlow(status.value)
         }
 
         binding.btnDeparture.setOnClickListener {
             status = FlyingStatus.DEPARTURE
-            flyingViewModel.getFlyingInfoListFlow(status.value, status.value)
+            flyingViewModel.getFlyingInfoListFlow(status.value)
         }
     }
 

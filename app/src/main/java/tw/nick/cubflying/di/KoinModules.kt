@@ -15,6 +15,7 @@ import tw.nick.cubflying.api.CurrencyApiService
 import tw.nick.cubflying.api.FlyingApiService
 import tw.nick.cubflying.api.OkHttpBuilder
 import tw.nick.cubflying.api.RetrofitBuilder
+import tw.nick.cubflying.service.floating.FloatingEventBus
 import tw.nick.cubflying.ui.flying.FlyingViewModel
 import tw.nick.cubflying.viewmodel.MainViewModel
 
@@ -27,7 +28,8 @@ object KoinModules {
                 listOf(
                     apiServiceModule,
                     viewModelModule,
-                    systemModule
+                    systemModule,
+                    eventModule
                 )
             )
         }
@@ -54,6 +56,10 @@ object KoinModules {
     private val systemModule = module {
         factory { androidContext().getSystemService(WINDOW_SERVICE) as WindowManager }
         factory { androidContext().getSystemService(LAYOUT_INFLATER_SERVICE) as LayoutInflater }
+    }
+
+    private val eventModule = module {
+        single { FloatingEventBus }
     }
 
 

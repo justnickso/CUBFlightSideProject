@@ -9,16 +9,17 @@ import tw.nick.cubflying.data.RatesInfo
 import tw.nick.cubflying.databinding.ItemCurrencyRateInfoBinding
 import tw.nick.cubflying.ui.adapter.viewholder.CurrencyRateItemListViewHolder
 
-class CurrencyRateListAdapter : ListAdapter<RatesInfo, RecyclerView.ViewHolder>(diffCallback){
+class CurrencyRateListAdapter(private val listener: OnItemSelectedListener) :
+    ListAdapter<RatesInfo, RecyclerView.ViewHolder>(diffCallback) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-       return CurrencyRateItemListViewHolder(
-           ItemCurrencyRateInfoBinding.inflate(
-               LayoutInflater.from(parent.context),
-               parent,
-               false
-           )
-       )
+        return CurrencyRateItemListViewHolder(
+            ItemCurrencyRateInfoBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            ), listener
+        )
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
@@ -43,4 +44,8 @@ class CurrencyRateListAdapter : ListAdapter<RatesInfo, RecyclerView.ViewHolder>(
         }
     }
 
+}
+
+interface OnItemSelectedListener {
+    fun onItemSelected(ratesInfo: RatesInfo)
 }

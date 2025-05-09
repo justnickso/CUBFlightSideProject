@@ -16,7 +16,10 @@ import tw.nick.cubflying.api.response.FlyingResponse
 import tw.nick.cubflying.api.response.LatestExchangeRateResponse
 import tw.nick.cubflying.api.retrofit.ApiResponse
 
-class MainViewModel(private val apiService : FlyingApiService, private val currencyApiService : CurrencyApiService) :ViewModel() {
+class MainViewModel(
+    private val apiService: FlyingApiService,
+    private val currencyApiService: CurrencyApiService
+) : ViewModel() {
 
     private val _flyingInfoFlow = MutableSharedFlow<FlyingResponse>()
     val flyingInfoFlow = _flyingInfoFlow
@@ -28,10 +31,10 @@ class MainViewModel(private val apiService : FlyingApiService, private val curre
     val currencyRateFlow = _currencyRateFlow
 
 
-    suspend fun getFlyingInfo() : FlyingResponse? = withContext(Dispatchers.IO) {
-        when(val response = apiService.getFlyingInfo()) {
+    suspend fun getFlyingInfo(): FlyingResponse? = withContext(Dispatchers.IO) {
+        when (val response = apiService.getFlyingInfo()) {
             is ApiResponse.Success -> response.data
-            is ApiResponse.Failure ,
+            is ApiResponse.Failure,
             is ApiResponse.NetworkDisconnected -> {
                 return@withContext null
             }
@@ -40,7 +43,7 @@ class MainViewModel(private val apiService : FlyingApiService, private val curre
 
     fun getFlyingInfoFlow() {
         viewModelScope.launch {
-            when(val response = apiService.getFlyingInfo()) {
+            when (val response = apiService.getFlyingInfo()) {
                 is ApiResponse.Success -> _flyingInfoFlow.emit(response.data)
                 is ApiResponse.Failure -> _errorFlow.emit("Failure")
                 is ApiResponse.NetworkDisconnected -> _errorFlow.emit("Network Disconnected")
@@ -60,7 +63,7 @@ class MainViewModel(private val apiService : FlyingApiService, private val curre
 
     fun getCurrencyFlow() {
         viewModelScope.launch {
-            when(val response = currencyApiService.getCurrency()) {
+            when (val response = currencyApiService.getCurrency()) {
                 is ApiResponse.Success -> _currencyFlow.emit(response.data)
                 is ApiResponse.Failure -> _errorFlow.emit("Failure")
                 is ApiResponse.NetworkDisconnected -> _errorFlow.emit("Network Disconnected")
@@ -68,9 +71,10 @@ class MainViewModel(private val apiService : FlyingApiService, private val curre
         }
     }
 
-    fun getCurrencyRateFlow() {
+    fun getCurrencyRateFlow(baseCurrency: String? = null) {
         viewModelScope.launch {
-            when(val response = currencyApiService.getLatestExchangeRate()) {
+            when (val response =
+                currencyApiService.getLatestExchangeRate(baseCurrency = baseCurrency)) {
                 is ApiResponse.Success -> _currencyRateFlow.emit(response.data)
                 is ApiResponse.Failure -> _errorFlow.emit("Failure")
                 is ApiResponse.NetworkDisconnected -> _errorFlow.emit("Network Disconnected")

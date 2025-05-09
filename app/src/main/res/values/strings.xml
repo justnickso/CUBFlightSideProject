@@ -7,4 +7,5 @@
     <string name="arrival">抵達</string>
     <string name="departure">出發</string>
     <string name="boarding_gate">登機門：</string>
+    <string name="overlay_permission_not_granted">未授予覆蓋權限</string>
 </resources>

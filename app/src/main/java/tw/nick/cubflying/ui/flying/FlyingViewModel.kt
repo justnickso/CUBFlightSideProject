@@ -21,7 +21,7 @@ class FlyingViewModel(private val apiService: FlyingApiService) : ViewModel() {
     val showLoading = _showLoading
     private var job: Job? = null
 
-    fun getFlyingInfoListFlow(line: Int, io: Int) {
+    fun getFlyingInfoListFlow(line: Int, io: Int = CommonUtil.DOMESTIC_FLIGHTS) {
         job?.cancel()
         job = viewModelScope.launch {
             while (isActive) {
