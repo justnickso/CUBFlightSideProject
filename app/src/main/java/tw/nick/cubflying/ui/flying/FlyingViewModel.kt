@@ -32,8 +32,14 @@ class FlyingViewModel(private val apiService: FlyingApiService) : ViewModel() {
                         _showLoading.emit(false)
                     }
 
-                    is ApiResponse.Failure -> _errorFlow.emit("Failure")
-                    is ApiResponse.NetworkDisconnected -> _errorFlow.emit("Network Disconnected")
+                    is ApiResponse.Failure -> {
+                        _errorFlow.emit("Failure")
+                        _showLoading.emit(false)
+                    }
+                    is ApiResponse.NetworkDisconnected -> {
+                        _errorFlow.emit("Network Disconnected")
+                        _showLoading.emit(false)
+                    }
                 }
                 delay(CommonUtil.API_UPDATE_TIME)
             }
