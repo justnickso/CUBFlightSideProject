@@ -21,7 +21,7 @@ class FlyingViewModel(private val apiService: FlyingApiService) : ViewModel() {
     val showLoading = _showLoading
     private var job: Job? = null
 
-    fun getFlyingInfoListFlow(line: Int, io: Int = CommonUtil.DOMESTIC_FLIGHTS) {
+    fun getFlyingInfoListFlow(line: Int = CommonUtil.DOMESTIC_FLIGHTS, io: Int) {
         job?.cancel()
         job = viewModelScope.launch {
             while (isActive) {
@@ -36,6 +36,7 @@ class FlyingViewModel(private val apiService: FlyingApiService) : ViewModel() {
                         _errorFlow.emit("Failure")
                         _showLoading.emit(false)
                     }
+
                     is ApiResponse.NetworkDisconnected -> {
                         _errorFlow.emit("Network Disconnected")
                         _showLoading.emit(false)

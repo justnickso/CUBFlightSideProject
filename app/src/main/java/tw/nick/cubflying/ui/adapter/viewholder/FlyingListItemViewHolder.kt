@@ -1,6 +1,8 @@
 package tw.nick.cubflying.ui.adapter.viewholder
 
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
+import coil.transform.RoundedCornersTransformation
 import tw.nick.cubflying.R
 import tw.nick.cubflying.data.FlyingInfo
 import tw.nick.cubflying.databinding.ItemFlyingInfoBinding
@@ -23,6 +25,11 @@ class FlyingListItemViewHolder(private val binding: ItemFlyingInfoBinding) :
             tvRealTime.text = flyingInfo.realTime
             tvDelayCause.text = flyingInfo.airFlyDelayCause
             tvAirplaneType.text = flyingInfo.airPlaneType
+            ivAirlineIcon.load(flyingInfo.airLineLogo) {
+                crossfade(true)
+                crossfade(1000)
+            }
+
         }
     }
 }

@@ -90,6 +90,8 @@ dependencies {
     implementation(libs.moshi.adapters)
     implementation(libs.lottie)
     implementation(libs.timber)
+    implementation(libs.coil)
+    implementation(libs.coil.gif)
 
     // KSP
     ksp(libs.moshi.kotlin.codegen)

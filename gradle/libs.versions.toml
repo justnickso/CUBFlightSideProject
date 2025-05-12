@@ -27,11 +27,14 @@ versionMoshiKotlinCodeGen = "1.15.1"
 versionMoshiAdapters = "1.15.1"
 versionLottie = "6.5.2"
 versionTimber = "5.0.1"
+coil = "2.4.0"
+coilGif = "2.6.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
 androidx-lifecycle-service = { module = "androidx.lifecycle:lifecycle-service", version.ref = "lifecycleService" }
+coil-gif = { module = "io.coil-kt:coil-gif", version.ref = "coilGif" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
 androidx-lifecycle-livedata-ktx = { group = "androidx.lifecycle", name = "lifecycle-livedata-ktx", version.ref = "lifecycleLivedataKtx" }
@@ -52,6 +55,7 @@ moshi-kotlin-codegen = { group = "com.squareup.moshi", name = "moshi-kotlin-code
 moshi-adapters = { group = "com.squareup.moshi", name = "moshi-adapters", version.ref = "versionMoshiAdapters" }
 lottie = { group = "com.airbnb.android", name = "lottie", version.ref = "versionLottie" }
 timber = { group = "com.jakewharton.timber", name = "timber", version.ref = "versionTimber" }
+coil = {group = "io.coil-kt", name = "coil", version.ref = "coil" }
 
 # Unit Test
 junit = { group = "junit", name = "junit", version.ref = "junit" }

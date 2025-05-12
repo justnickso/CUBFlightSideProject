@@ -15,6 +15,8 @@ import tw.nick.cubflying.api.response.CurrencyResponse
 import tw.nick.cubflying.api.response.FlyingResponse
 import tw.nick.cubflying.api.response.LatestExchangeRateResponse
 import tw.nick.cubflying.api.retrofit.ApiResponse
+import tw.nick.cubflying.ui.enums.FlyingStatus
+import tw.nick.cubflying.util.CommonUtil
 
 class MainViewModel(
     private val apiService: FlyingApiService,
@@ -32,7 +34,7 @@ class MainViewModel(
 
 
     suspend fun getFlyingInfo(): FlyingResponse? = withContext(Dispatchers.IO) {
-        when (val response = apiService.getFlyingInfo()) {
+        when (val response = apiService.getFlyingInfo(CommonUtil.DOMESTIC_FLIGHTS, FlyingStatus.ARRIVAL.value)) {
             is ApiResponse.Success -> response.data
             is ApiResponse.Failure,
             is ApiResponse.NetworkDisconnected -> {
@@ -43,7 +45,7 @@ class MainViewModel(
 
     fun getFlyingInfoFlow() {
         viewModelScope.launch {
-            when (val response = apiService.getFlyingInfo()) {
+            when (val response = apiService.getFlyingInfo(CommonUtil.DOMESTIC_FLIGHTS, FlyingStatus.ARRIVAL.value)) {
                 is ApiResponse.Success -> _flyingInfoFlow.emit(response.data)
                 is ApiResponse.Failure -> _errorFlow.emit("Failure")
                 is ApiResponse.NetworkDisconnected -> _errorFlow.emit("Network Disconnected")

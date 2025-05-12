@@ -50,7 +50,7 @@ class FlyingFragment : Fragment() {
 
     private fun initView() {
         //default Data
-        flyingViewModel.getFlyingInfoListFlow(status.value)
+        flyingViewModel.getFlyingInfoListFlow(io = status.value)
 
         binding.rvFlying.apply {
             layoutManager = LinearLayoutManager(context)
@@ -59,12 +59,12 @@ class FlyingFragment : Fragment() {
 
         binding.btnArrival.setOnClickListener {
             status = FlyingStatus.ARRIVAL
-            flyingViewModel.getFlyingInfoListFlow(status.value)
+            flyingViewModel.getFlyingInfoListFlow(io = status.value)
         }
 
         binding.btnDeparture.setOnClickListener {
             status = FlyingStatus.DEPARTURE
-            flyingViewModel.getFlyingInfoListFlow(status.value)
+            flyingViewModel.getFlyingInfoListFlow(io = status.value)
         }
     }
 
@@ -94,19 +94,19 @@ class FlyingFragment : Fragment() {
         lifecycleScope.launch(Dispatchers.IO) {
             flyingViewModel.showLoading.collect { show ->
                 withContext(Dispatchers.Main) {
-                     if(show) {
-                         binding.lottieLoading.apply {
-                             visibility = View.VISIBLE
-                             repeatMode = LottieDrawable.RESTART
-                             repeatCount = LottieDrawable.INFINITE
-                             playAnimation()
-                         }
-                     } else {
-                         binding.lottieLoading.apply {
-                             visibility = View.GONE
-                             cancelAnimation()
-                         }
-                     }
+                    if (show) {
+                        binding.lottieLoading.apply {
+                            visibility = View.VISIBLE
+                            repeatMode = LottieDrawable.RESTART
+                            repeatCount = LottieDrawable.INFINITE
+                            playAnimation()
+                        }
+                    } else {
+                        binding.lottieLoading.apply {
+                            visibility = View.GONE
+                            cancelAnimation()
+                        }
+                    }
                 }
             }
         }
