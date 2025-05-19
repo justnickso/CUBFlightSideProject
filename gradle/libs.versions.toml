@@ -14,7 +14,7 @@ lifecycleLivedataKtx = "2.8.7"
 lifecycleViewmodelKtx = "2.8.7"
 navigationFragmentKtx = "2.8.9"
 navigationUiKtx = "2.8.9"
-versionDataStore = "1.1.5"
+versionDataStore = "1.1.6"
 versionProtobufJavaLite = "4.28.3"
 versionProtobufKotlinLite = "4.28.3"
 # Third Party Library
@@ -27,6 +27,7 @@ versionMoshiKotlinCodeGen = "1.15.1"
 versionMoshiAdapters = "1.15.1"
 versionLottie = "6.5.2"
 versionTimber = "5.0.1"
+versionProtobufPlugin = "0.9.4"
 coil = "2.4.0"
 coilGif = "2.6.0"
 
@@ -57,6 +58,7 @@ lottie = { group = "com.airbnb.android", name = "lottie", version.ref = "version
 timber = { group = "com.jakewharton.timber", name = "timber", version.ref = "versionTimber" }
 coil = {group = "io.coil-kt", name = "coil", version.ref = "coil" }
 
+
 # Unit Test
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
@@ -67,4 +69,5 @@ androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-co
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "kspPlugin"}
+protobuf = { id = "com.google.protobuf", version.ref = "versionProtobufPlugin"}
 

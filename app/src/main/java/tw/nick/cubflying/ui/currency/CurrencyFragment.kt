@@ -24,9 +24,10 @@ import tw.nick.cubflying.service.CUBFlyingService
 import tw.nick.cubflying.ui.adapter.CurrencyRateListAdapter
 import tw.nick.cubflying.viewmodel.MainViewModel
 import androidx.core.net.toUri
-import org.koin.java.KoinJavaComponent.inject
+import org.koin.android.ext.android.inject
 import tw.nick.cubflying.R
 import tw.nick.cubflying.data.RatesInfo
+import tw.nick.cubflying.data.datastore.CurrencyDataStore
 import tw.nick.cubflying.service.floating.FloatingCommand
 import tw.nick.cubflying.service.floating.FloatingEventBus
 import tw.nick.cubflying.ui.adapter.OnItemSelectedListener
@@ -40,7 +41,8 @@ class CurrencyFragment : Fragment(), OnItemSelectedListener {
     private val currencyRateListAdapter = CurrencyRateListAdapter(this@CurrencyFragment)
     private var selectedCurrency = "USD"
     private var selectedRatesInfo: RatesInfo? = null
-    private val floatingEventBus: FloatingEventBus by inject(FloatingEventBus::class.java)
+    private val floatingEventBus: FloatingEventBus by inject()
+    private val currencyDataStore: CurrencyDataStore by inject()
 
     private val overlayPermissionLauncher =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { _ ->
@@ -120,6 +122,12 @@ class CurrencyFragment : Fragment(), OnItemSelectedListener {
                 }
             }
         }
+
+        lifecycleScope.launch {
+            mainViewModel.currencyName.collect{
+                selectedCurrency = it
+            }
+        }
     }
 
     override fun onItemSelected(ratesInfo: RatesInfo) {
@@ -177,6 +185,9 @@ class CurrencyFragment : Fragment(), OnItemSelectedListener {
                     val spinnerSelectedCurrency = rates[position]
                     if (selectedCurrency != spinnerSelectedCurrency.currency) {
                         selectedCurrency = spinnerSelectedCurrency.currency
+                        lifecycleScope.launch(Dispatchers.IO) {
+                            currencyDataStore.setCurrency(spinnerSelectedCurrency.currency, spinnerSelectedCurrency.rate)
+                        }
                         setSelection(position)
                         mainViewModel.getCurrencyRateFlow(rates[position].currency)
                     }

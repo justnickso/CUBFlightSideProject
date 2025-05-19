@@ -19,6 +19,7 @@
 - **UI 動畫**：Lottie
 - **浮動視窗實作**：WindowManager + Foreground Service
 - **圖片載入**：Coil
+- **資料儲存**：Proto DataStore*
 
 ## 📷 影片
 [App Demo](https://www.youtube.com/watch?v=6fbo8Wa45UQ)
