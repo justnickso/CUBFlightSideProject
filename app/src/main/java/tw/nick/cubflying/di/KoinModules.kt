@@ -15,6 +15,8 @@ import tw.nick.cubflying.api.CurrencyApiService
 import tw.nick.cubflying.api.FlyingApiService
 import tw.nick.cubflying.api.OkHttpBuilder
 import tw.nick.cubflying.api.RetrofitBuilder
+import tw.nick.cubflying.data.datastore.CurrencyDataStore
+import tw.nick.cubflying.data.datastore.currencyDataStore
 import tw.nick.cubflying.service.floating.FloatingEventBus
 import tw.nick.cubflying.ui.flying.FlyingViewModel
 import tw.nick.cubflying.viewmodel.MainViewModel
@@ -29,7 +31,8 @@ object KoinModules {
                     apiServiceModule,
                     viewModelModule,
                     systemModule,
-                    eventModule
+                    eventModule,
+                    dataStoreModule
                 )
             )
         }
@@ -49,7 +52,7 @@ object KoinModules {
 
 
     private val viewModelModule = module {
-        viewModel { MainViewModel(get(), get()) }
+        viewModel { MainViewModel(get(), get(), get()) }
         viewModel { FlyingViewModel(get()) }
     }
 
@@ -60,6 +63,10 @@ object KoinModules {
 
     private val eventModule = module {
         single { FloatingEventBus }
+    }
+
+    private val dataStoreModule = module {
+        single { CurrencyDataStore(androidContext().currencyDataStore) }
     }
 
 

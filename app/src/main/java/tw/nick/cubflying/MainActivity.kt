@@ -37,23 +37,7 @@ class MainActivity : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
-       // mainViewModel.getFlyingInfoFlow()
         mainViewModel.getCurrencyFlow()
-        //initCollection()
     }
 
-    private fun initCollection() {
-        lifecycleScope.launch(Dispatchers.IO) {
-            mainViewModel.flyingInfoFlow.collect{
-                Log.d(TAG, "initCollection flyingInfoFlow: $it")
-            }
-        }
-
-        lifecycleScope.launch(Dispatchers.IO) {
-            mainViewModel.currencyFlow.collect{
-                Log.d(TAG, "initCollection currencyFlow: ${it.currencyData}")
-            }
-        }
-
-    }
 }

@@ -15,6 +15,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.activityViewModel
+import org.koin.core.time.Timer
 import tw.nick.cubflying.api.response.toInfo
 import tw.nick.cubflying.databinding.FragmentFlyingBinding
 import tw.nick.cubflying.ui.adapter.FlyingListAdapter
